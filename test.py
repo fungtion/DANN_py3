@@ -6,7 +6,7 @@ from data_loader import GetLoader
 from torchvision import datasets
 
 
-def test(dataset_name, epoch):
+def test(dataset_name):
     assert dataset_name in ['MNIST', 'mnist_m']
 
     model_root = 'models'
@@ -54,10 +54,10 @@ def test(dataset_name, epoch):
         num_workers=8
     )
 
-    """ training """
+    """ test """
 
     my_net = torch.load(os.path.join(
-        model_root, 'mnist_mnistm_model_epoch_' + str(epoch) + '.pth'
+        model_root, 'mnist_mnistm_model_epoch_current.pth'
     ))
     my_net = my_net.eval()
 
@@ -79,25 +79,17 @@ def test(dataset_name, epoch):
 
         batch_size = len(t_label)
 
-        input_img = torch.FloatTensor(batch_size, 3, image_size, image_size)
-        class_label = torch.LongTensor(batch_size)
-
         if cuda:
             t_img = t_img.cuda()
             t_label = t_label.cuda()
-            input_img = input_img.cuda()
-            class_label = class_label.cuda()
 
-        input_img.resize_as_(t_img).copy_(t_img)
-        class_label.resize_as_(t_label).copy_(t_label)
-
-        class_output, _ = my_net(input_data=input_img, alpha=alpha)
+        class_output, _ = my_net(input_data=t_img, alpha=alpha)
         pred = class_output.data.max(1, keepdim=True)[1]
-        n_correct += pred.eq(class_label.data.view_as(pred)).cpu().sum()
+        n_correct += pred.eq(t_label.data.view_as(pred)).cpu().sum()
         n_total += batch_size
 
         i += 1
 
     accu = n_correct.data.numpy() * 1.0 / n_total
 
-    print ('epoch: %d, accuracy of the %s dataset: %f' % (epoch, dataset_name, accu))
+    return accu

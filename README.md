@@ -2,8 +2,8 @@
 
 
 #### Environment
-- Pytorch 1.0
-- Python 3.7
+- Pytorch 1.6
+- Python 3.8.5
 
 #### Network Structure
 
@@ -12,17 +12,13 @@
 
 #### Dataset
 
-First, download target dataset mnist_m from [pan.baidu.com](https://pan.baidu.com/s/1pXaMkVsQf_yUT51SeYh27g) fetch code: kjan or [Google Drive](https://drive.google.com/open?id=0B_tExHiYS-0veklUZHFYT19KYjg)
+First, download target dataset mnist_m from [pan.baidu.com](https://pan.baidu.com/s/1pXaMkVsQf_yUT51SeYh27g) fetch code: kjan or [Google Drive](https://drive.google.com/open?id=0B_tExHiYS-0veklUZHFYT19KYjg), and put mnist_m dataset into dataset/mnist_m, the structure is as follows:
 
-```
-cd DANN_py3
-mkdir dataset
-cd dataset
-mkdir mnist_m
-cd mnist_m
-tar -zvxf mnist_m.tar.gz
-mkdir models
-```
+--dataset--mnist_m--mnist_m_train
+                 |--mnist_m_test
+                 |--mnist_m_train_labels.txt
+                 |--mnist_m_test_labels.txt
+                 |--.gitkeep
 
 #### Training
 

@@ -14,11 +14,14 @@
 
 First, download target dataset mnist_m from [pan.baidu.com](https://pan.baidu.com/s/1pXaMkVsQf_yUT51SeYh27g) fetch code: kjan or [Google Drive](https://drive.google.com/open?id=0B_tExHiYS-0veklUZHFYT19KYjg), and put mnist_m dataset into dataset/mnist_m, the structure is as follows:
 
+```
 --dataset--mnist_m--mnist_m_train
                  |--mnist_m_test
                  |--mnist_m_train_labels.txt
                  |--mnist_m_test_labels.txt
                  |--.gitkeep
+
+```
 
 #### Training
 

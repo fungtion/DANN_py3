@@ -21,7 +21,7 @@ class CNNModel(nn.Module):
         self.class_classifier.add_module('c_fc1', nn.Linear(50 * 4 * 4, 100))
         self.class_classifier.add_module('c_bn1', nn.BatchNorm1d(100))
         self.class_classifier.add_module('c_relu1', nn.ReLU(True))
-        self.class_classifier.add_module('c_drop1', nn.Dropout2d())
+        self.class_classifier.add_module('c_drop1', nn.Dropout())
         self.class_classifier.add_module('c_fc2', nn.Linear(100, 100))
         self.class_classifier.add_module('c_bn2', nn.BatchNorm1d(100))
         self.class_classifier.add_module('c_relu2', nn.ReLU(True))

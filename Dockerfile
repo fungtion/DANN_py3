@@ -1,6 +1,6 @@
 # The dockerfile is built to produce image of the pytorch implementation of Unsupervised Domain Adaptation by Backpropagation
 
-FROM pytorch/pytorch:1.0.1-cuda10.0-cudnn7-runtime
+FROM pytorch/pytorch:1.6.0-cuda10.1-cudnn7-runtime
 
 RUN pip install pillow \
  && pip install torchvision \
